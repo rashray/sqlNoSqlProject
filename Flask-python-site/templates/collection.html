@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Accidents</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+        <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    </head>
+<body>
+    <div class="container">
+        <div align="left">
+            <a href="/about">BACK</a>
+        </div>
+        <h1>Accidents Analysis</h1>
+        <div class="jumbotron">
+            <h5>{{collection}} - {{columnName}}</h5>
+            <div align="right">
+                    <sub><b>Loading Time: </b>{{loadDuration}}</Loading></sub>
+             </div>
+            <b>Conditions : </b><span id="labels">{{chartData.labels}}</span><br>
+            <b>Ocurrence : </b><span id="ssData">{{chartData.ssData}}</span><br><br>
+            <br><br>
+            <h5>Analysis</h5>
+            <div class="row">
+                <div id="mychart" class=" col-md-8 ct-chart ct-perfect-fourth"></div>
+                <div class="col-md-3" style="border:1px solid rgba(0, 0, 0, 0.158);"><b>LEGEND</b><br>
+                    {% for legend in legends %}
+                        <span>{{legend.name}} - {{legend.displayName}}</span><br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        var seriesdata = document.getElementById("ssData").innerHTML.split(',');
+        var labeldata = document.getElementById("labels").innerHTML.split(',');
+        seriesdata[0] = seriesdata[0].slice(1);
+        seriesdata[seriesdata.length -1] = seriesdata[seriesdata.length -1].slice(0,-1);
+        labeldata[0] = labeldata[0].slice(1);
+        labeldata[labeldata.length -1] = labeldata[labeldata.length -1].slice(0,-1);
+        var chartdata = {
+        // A labels array that can contain any sort of values
+        labels: labeldata,
+        series: [seriesdata]
+        };
+
+// As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
+// as you saw in the previous example
+var options = {
+  width: 500,
+  height: 400,
+  scales: {
+        xAxes: [{
+            barPercentage: 10
+        }]
+    }
+};
+
+// Create a new line chart object where as first parameter we pass in a selector
+// that is resolving to our chart container element. The Second parameter
+// is the actual data object. As a third parameter we pass in our custom options.
+new Chartist.Bar('.ct-chart', chartdata, options);
+    </script>
+</body>
+</html>

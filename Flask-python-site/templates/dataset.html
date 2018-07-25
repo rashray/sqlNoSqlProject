@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h4>Accidents in France</h4>
+     <div class="jumbotron">
+        <p>Every year, road accidents cause thousands of deaths. I strongly Believe that Data Science can be used for good, That's why I decided to make this contribution.
+        </p>
+        <p> Here Is the description of the dataset</p>
+        <h5>Collections</h5>
+            <ul class="list-group-item" style="padding-left: 20px"><b>Characterstics</b>
+                <sub>This collection provides the information on the characterstics of the accident</sub><br>
+                <a  style="padding-left: 20px" href="collections/caracteristics/lum">Lighting Condition</a>
+                <a  style="padding-left: 20px" href="collections/caracteristics/int">Type of Intersection</a>
+                <a  style="padding-left: 20px" href="collections/caracteristics/atm">Atmospheric Condition</a>
+                <a  style="padding-left: 20px" href="collections/caracteristics/an">Year of the accident</a>
+            </ul>
+            <ul class="list-group-item" style="padding-left: 20px"><b>Places</b>
+                <sub>This collection provides the information on the Places of the accident</sub>
+                <p><a  style="padding-left: 20px" href="collections/places/catr">Category of road</a>
+                <a  style="padding-left: 20px" href="collections/places/situ">Situation of the Accident</a></p>
+            </ul>
+            <ul class="list-group-item" style="padding-left: 20px"><b>Vehicles</b>
+                <sub>This collection provides the information on the Vehicles of the accident</sub>
+                <p><a  style="padding-left: 20px" href="collections/vehicles/catv">Category of the Vehicle</a>
+            </ul>
+            <ul class="list-group-item" style="padding-left: 20px"><b>Users</b>
+                <sub>This collection provides the information on the Users of the accident</sub>
+                <p><a  style="padding-left: 20px" href="collections/users/catu">User Category</a>
+                <a  style="padding-left: 20px" href="collections/users/sexe">Gender of the User</a></p>
+                <a  style="padding-left: 20px" href="collections/users/trip">Reson for Travelling at the Time</a></p>
+            </ul>
+    </div>
+    
+{% endblock %}
